@@ -1,17 +1,19 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Home, Compass, Bookmark, Menu } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export default function BottomNav() {
-  const [active, setActive] = useState('home');
+  const pathname = usePathname();
 
   const navItems = [
-    { id: 'home', icon: Home, label: 'হোম' },
-    { id: 'explore', icon: Compass, label: 'খবর' },
-    { id: 'saved', icon: Bookmark, label: 'সেভড' },
-    { id: 'menu', icon: Menu, label: 'মেন্যু' },
+    { id: 'home', path: '/', icon: Home, label: 'হোম' },
+    { id: 'explore', path: '/explore', icon: Compass, label: 'খবর' },
+    { id: 'saved', path: '/saved', icon: Bookmark, label: 'সেভড' },
+    { id: 'menu', path: '/menu', icon: Menu, label: 'মেন্যু' },
   ];
 
   return (
@@ -19,12 +21,12 @@ export default function BottomNav() {
       <div className="flex justify-around items-center max-w-2xl mx-auto h-16">
         {navItems.map((item) => {
           const Icon = item.icon;
-          const isActive = active === item.id;
+          const isActive = pathname === item.path;
           
           return (
-            <button
+            <Link
+              href={item.path}
               key={item.id}
-              onClick={() => setActive(item.id)}
               className="flex flex-col items-center justify-center w-full h-full relative"
             >
               {isActive && (
@@ -42,7 +44,7 @@ export default function BottomNav() {
               <span className={`text-[10px] font-medium transition-colors ${isActive ? 'text-blue-600' : 'text-gray-500'}`}>
                 {item.label}
               </span>
-            </button>
+            </Link>
           );
         })}
       </div>

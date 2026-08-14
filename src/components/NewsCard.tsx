@@ -19,6 +19,8 @@ export default function NewsCard({ article, featured = false }: NewsCardProps) {
           src={article.imageUrl}
           alt={article.title}
           fill
+          sizes="(max-width: 768px) 100vw, 50vw"
+          quality={75}
           className="object-cover transition-transform duration-700 group-hover:scale-105"
           priority
         />
@@ -42,11 +44,13 @@ export default function NewsCard({ article, featured = false }: NewsCardProps) {
 
   return (
     <article className="flex gap-4 p-4 border-b border-gray-100 group cursor-pointer hover:bg-gray-50 transition-colors">
-      <div className="relative w-28 h-20 shrink-0 overflow-hidden rounded-md">
+      <div className="relative w-28 h-20 shrink-0 overflow-hidden rounded-md bg-gray-200">
         <Image
           src={article.imageUrl}
           alt={article.title}
           fill
+          sizes="112px"
+          quality={60}
           className="object-cover transition-transform duration-500 group-hover:scale-110"
         />
       </div>

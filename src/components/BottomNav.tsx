@@ -8,10 +8,10 @@ export default function BottomNav() {
   const [active, setActive] = useState('home');
 
   const navItems = [
-    { id: 'home', icon: Home, label: 'Home' },
-    { id: 'explore', icon: Compass, label: 'Explore' },
-    { id: 'saved', icon: Bookmark, label: 'Saved' },
-    { id: 'menu', icon: Menu, label: 'Menu' },
+    { id: 'home', icon: Home, label: 'হোম' },
+    { id: 'explore', icon: Compass, label: 'খবর' },
+    { id: 'saved', icon: Bookmark, label: 'সেভড' },
+    { id: 'menu', icon: Menu, label: 'মেন্যু' },
   ];
 
   return (

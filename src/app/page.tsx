@@ -5,13 +5,13 @@ import NewsCard from '@/components/NewsCard';
 import { newsArticles, categories } from '@/data/news';
 
 export default function Home() {
-  const [activeCategory, setActiveCategory] = useState('All');
+  const [activeCategory, setActiveCategory] = useState('সব');
 
   const featuredArticle = newsArticles[0];
   
   const filteredArticles = newsArticles
     .slice(1) // exclude featured from the list
-    .filter(article => activeCategory === 'All' || article.category === activeCategory);
+    .filter(article => activeCategory === 'সব' || article.category === activeCategory);
 
   return (
     <div className="flex flex-col min-h-screen bg-white pb-6">
@@ -43,7 +43,7 @@ export default function Home() {
       <section className="flex flex-col mt-2">
         <div className="px-4 py-3 flex items-center justify-between">
           <h2 className="text-lg font-bold text-gray-900 border-l-4 border-blue-600 pl-2">
-            Latest News
+            সর্বশেষ খবর
           </h2>
         </div>
         <div className="flex flex-col">
@@ -53,7 +53,7 @@ export default function Home() {
             ))
           ) : (
             <div className="p-8 text-center text-gray-500">
-              No articles found in this category.
+              এই বিভাগে কোন খবর পাওয়া যায়নি।
             </div>
           )}
         </div>

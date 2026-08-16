@@ -16,7 +16,7 @@ export const newsArticles: NewsArticle[] = [
     title: "প্রবাসীদের জন্য নতুন ডিজিটাল ইকামা ঘোষণা করেছে সৌদি আরব",
     description: "সৌদি আরবের পাসপোর্ট অধিদপ্তর একটি সম্পূর্ণ ডিজিটাল ইকামা চালু করেছে, যার মাধ্যমে প্রবাসীরা তাদের রেসিডেন্সি পারমিট স্মার্টফোনে বহন করতে পারবেন।",
     category: "মধ্যপ্রাচ্য",
-    imageUrl: "https://images.unsplash.com/photo-1575294578144-8c838e53a362?q=80&w=2070&auto=format&fit=crop",
+    imageUrl: "/images/news1.jpg",
     date: "2026-08-14T09:00:00Z",
     source: "সৌদি গেজেট"
   },
@@ -25,7 +25,7 @@ export const newsArticles: NewsArticle[] = [
     title: "নন-ইইউ নাগরিকদের জন্য ৪০,০০০ সিজনাল ওয়ার্ক ভিসা খুলল ইতালি",
     description: "ইতালি সরকার অত্যন্ত প্রত্যাশিত 'ডিক্রেটো ফ্লুসি' প্রকাশ করেছে, যেখানে কৃষি ও পর্যটন খাতের জন্য কয়েক হাজার সিজনাল ওয়ার্ক ভিসা দেওয়া হচ্ছে।",
     category: "ইউরোপ",
-    imageUrl: "https://images.unsplash.com/photo-1529154036614-a60975f5c760?q=80&w=2076&auto=format&fit=crop",
+    imageUrl: "/images/news2.jpg",
     date: "2026-08-13T14:30:00Z",
     source: "দ্য লোকাল ইতালি"
   },
@@ -34,7 +34,7 @@ export const newsArticles: NewsArticle[] = [
     title: "ভিসা নিয়মে ওমানের নতুন আপডেট: প্রবাসীদের যা জানা প্রয়োজন",
     description: "বিদেশি মেধা আকৃষ্ট করতে ওমান সরকার ফ্যামিলি জয়েনিং ভিসা এবং ইনভেস্টর ভিসার প্রক্রিয়াকে আরও সহজ করেছে।",
     category: "ভিসা ও ইমিগ্রেশন",
-    imageUrl: "https://images.unsplash.com/photo-1542615656-78d123a10111?q=80&w=2070&auto=format&fit=crop",
+    imageUrl: "/images/news3.jpg",
     date: "2026-08-12T10:15:00Z",
     source: "টাইমস অফ ওমান"
   },
@@ -43,7 +43,7 @@ export const newsArticles: NewsArticle[] = [
     title: "২০২৬ সালের জন্য স্টুডেন্ট ভিসার নিয়ম কঠোর করল নেদারল্যান্ডস",
     description: "আগামী শিক্ষাবর্ষ থেকে নেদারল্যান্ডসে পড়তে ইচ্ছুক আন্তর্জাতিক শিক্ষার্থীদের জন্য ভাষার প্রয়োজনীয়তা এবং আর্থিক প্রমাণের থ্রেশহোল্ড আরও কঠোর করা হয়েছে।",
     category: "ইউরোপ",
-    imageUrl: "https://images.unsplash.com/photo-1524047934617-cb782c24e5f3?q=80&w=2070&auto=format&fit=crop",
+    imageUrl: "/images/news4.jpg",
     date: "2026-08-11T08:45:00Z",
     source: "ডাচ নিউজ"
   },
@@ -52,7 +52,7 @@ export const newsArticles: NewsArticle[] = [
     title: "এবছরের মধ্যেই ১০,০০০ স্বাস্থ্যকর্মী নিয়োগের লক্ষ্য কাতারের",
     description: "চিকিৎসা খাতের বিশাল সম্প্রসারণের লক্ষ্যে কাতার দক্ষিণ এশিয়া এবং ফিলিপাইন থেকে প্রচুর ডাক্তার ও নার্স নিয়োগ করছে।",
     category: "কর্মসংস্থান",
-    imageUrl: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=2080&auto=format&fit=crop",
+    imageUrl: "/images/news5.jpg",
     date: "2026-08-10T16:20:00Z",
     source: "গাল্ফ টাইমস"
   },
@@ -61,7 +61,7 @@ export const newsArticles: NewsArticle[] = [
     title: "যুক্তরাষ্ট্রের ডাইভারসিটি ভিসা প্রোগ্রামের (গ্রিন কার্ড লটারি) তারিখ ঘোষণা",
     description: "মার্কিন পররাষ্ট্র দপ্তর আনুষ্ঠানিকভাবে ২০২৮ সালের ডাইভারসিটি ইমিগ্র্যান্ট ভিসা প্রোগ্রামের নিবন্ধনের তারিখ ঘোষণা করেছে।",
     category: "ভিসা ও ইমিগ্রেশন",
-    imageUrl: "https://images.unsplash.com/photo-1501504905252-473c47e087f8?q=80&w=1974&auto=format&fit=crop",
+    imageUrl: "/images/news1.jpg",
     date: "2026-08-09T11:00:00Z",
     source: "ইউএসসিআইএস"
   },
@@ -70,7 +70,7 @@ export const newsArticles: NewsArticle[] = [
     title: "সকল প্রবেশপথে নতুন বায়োমেট্রিক চেক চালু করল কুয়েত",
     description: "কুয়েতে ফেরা প্রবাসীদের এখন বিমানবন্দর এবং স্থল সীমান্তে বাধ্যতামূলক বায়োমেট্রিক স্ক্যানিংয়ের মধ্য দিয়ে যেতে হবে।",
     category: "মধ্যপ্রাচ্য",
-    imageUrl: "https://images.unsplash.com/photo-1522031174624-9b160f607c74?q=80&w=1974&auto=format&fit=crop",
+    imageUrl: "/images/news2.jpg",
     date: "2026-08-08T09:30:00Z",
     source: "কুয়েত টাইমস"
   },
@@ -79,7 +79,7 @@ export const newsArticles: NewsArticle[] = [
     title: "সংযুক্ত আরব আমিরাতে প্রবাসীদের জন্য নতুন বিনিয়োগ ভিসা চালু",
     description: "উদ্যোক্তা এবং বিনিয়োগকারীদের জন্য ৫ বছর মেয়াদী নতুন গোল্ডেন ভিসা ক্যাটাগরি ঘোষণা করেছে সংযুক্ত আরব আমিরাত সরকার।",
     category: "বাণিজ্য",
-    imageUrl: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=2070&auto=format&fit=crop",
+    imageUrl: "/images/news3.jpg",
     date: "2026-08-15T12:00:00Z",
     source: "খলিজ টাইমস"
   },
@@ -88,7 +88,7 @@ export const newsArticles: NewsArticle[] = [
     title: "মালয়েশিয়ায় অবৈধ কর্মীদের বৈধ হওয়ার নতুন সুযোগ",
     description: "মালয়েশিয়া সরকার 'রিক্যালিব্রেশন প্রোগ্রাম' এর আওতায় অবৈধ বিদেশি কর্মীদের শর্তসাপেক্ষে বৈধ হওয়ার সুযোগ দিচ্ছে।",
     category: "ভিসা ও ইমিগ্রেশন",
-    imageUrl: "https://images.unsplash.com/photo-1596422846543-75c6fc197f0a?q=80&w=2070&auto=format&fit=crop",
+    imageUrl: "/images/news4.jpg",
     date: "2026-08-16T08:20:00Z",
     source: "মালয় মেইল"
   },
@@ -97,7 +97,7 @@ export const newsArticles: NewsArticle[] = [
     title: "যুক্তরাজ্যে কেয়ার ওয়ার্কারদের নতুন ভিসা শর্তাবলী",
     description: "কেয়ার ওয়ার্কার ভিসায় ব্রিটেনে আসা কর্মীদের এখন থেকে তাদের পরিবার বা ডিপেন্ডেন্ট সাথে আনার উপর নিষেধাজ্ঞা আরোপ করেছে ইউকে হোম অফিস।",
     category: "ইউরোপ",
-    imageUrl: "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?q=80&w=2070&auto=format&fit=crop",
+    imageUrl: "/images/news5.jpg",
     date: "2026-08-14T18:45:00Z",
     source: "বিবিসি নিউজ"
   },
@@ -106,7 +106,7 @@ export const newsArticles: NewsArticle[] = [
     title: "দক্ষিণ কোরিয়ায় ইপিএস কর্মীদের বেতন বৃদ্ধি",
     description: "দক্ষিণ কোরিয়া সরকার ২০২৭ সালের জন্য ন্যূনতম মজুরি বৃদ্ধি করেছে, যা ইপিএস (এমপ্লয়মেন্ট পারমিট সিস্টেম) কর্মীদের জন্য সরাসরি সুবিধা বয়ে আনবে।",
     category: "কর্মসংস্থান",
-    imageUrl: "https://images.unsplash.com/photo-1540339832862-4745ea31a301?q=80&w=2070&auto=format&fit=crop",
+    imageUrl: "/images/news1.jpg",
     date: "2026-08-15T14:30:00Z",
     source: "কোরিয়া হেরাল্ড"
   },
@@ -115,7 +115,7 @@ export const newsArticles: NewsArticle[] = [
     title: "রেমিট্যান্স প্রেরণে নতুন রেকর্ড, প্রথম স্থানে যুক্তরাষ্ট্র",
     description: "চলতি মাসে প্রবাসীদের পাঠানো রেমিট্যান্স অতীতের সকল রেকর্ড ছাড়িয়ে গেছে। সবচেয়ে বেশি রেমিট্যান্স এসেছে যুক্তরাষ্ট্র থেকে।",
     category: "বাণিজ্য",
-    imageUrl: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=2070&auto=format&fit=crop",
+    imageUrl: "/images/news2.jpg",
     date: "2026-08-16T10:00:00Z",
     source: "বাংলাদেশ ব্যাংক"
   },
@@ -124,7 +124,7 @@ export const newsArticles: NewsArticle[] = [
     title: "সিঙ্গাপুরে নির্মাণ শ্রমিকদের স্বাস্থ্য বীমা বাধ্যতামূলক",
     description: "সিঙ্গাপুর সরকার সকল বিদেশি নির্মাণ শ্রমিকদের জন্য উন্নত স্বাস্থ্য বীমা কভারেজ বাধ্যতামূলক করেছে।",
     category: "কর্মসংস্থান",
-    imageUrl: "https://images.unsplash.com/photo-1541888086925-0c13d4b477ee?q=80&w=2070&auto=format&fit=crop",
+    imageUrl: "/images/news3.jpg",
     date: "2026-08-13T09:15:00Z",
     source: "স্ট্রেইটস টাইমস"
   },
@@ -133,7 +133,7 @@ export const newsArticles: NewsArticle[] = [
     title: "বাহরাইনে প্রবাসীদের জন্য ই-পাসপোর্ট নবায়ন সেবা চালু",
     description: "বাহরাইনে অবস্থানরত প্রবাসীরা এখন অনলাইনেই তাদের ই-পাসপোর্ট নবায়ন করতে পারবেন, যা প্রক্রিয়াটিকে আরও দ্রুত করবে।",
     category: "মধ্যপ্রাচ্য",
-    imageUrl: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=2074&auto=format&fit=crop",
+    imageUrl: "/images/news4.jpg",
     date: "2026-08-12T11:45:00Z",
     source: "গ্লোবাল নিউজ"
   },
@@ -142,7 +142,7 @@ export const newsArticles: NewsArticle[] = [
     title: "কানাডায় এক্সপ্রেস এন্ট্রি ড্র: ৫০০০ আমন্ত্রণপত্র ইস্যু",
     description: "সর্বশেষ এক্সপ্রেস এন্ট্রি ড্র-তে কানাডা ইমিগ্রেশন ৫০০০ দক্ষ পেশাদারকে পারমানেন্ট রেসিডেন্সির জন্য আমন্ত্রণ জানিয়েছে।",
     category: "ভিসা ও ইমিগ্রেশন",
-    imageUrl: "https://images.unsplash.com/photo-1503614472-8c93d56e92ce?q=80&w=2011&auto=format&fit=crop",
+    imageUrl: "/images/news5.jpg",
     date: "2026-08-16T15:20:00Z",
     source: "সিআইসি নিউজ"
   }

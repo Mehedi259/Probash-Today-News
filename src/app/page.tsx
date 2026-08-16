@@ -1,73 +1,45 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import NewsCard from '@/components/NewsCard';
-import { newsArticles, categories } from '@/data/news';
-import { TrendingUp, Sparkles, ChevronRight } from 'lucide-react';
-import Image from 'next/image';
+import NewsTicker from '@/components/NewsTicker';
+import { newsArticles } from '@/data/news';
+import { TrendingUp, ChevronRight, Globe2, Plane, Briefcase } from 'lucide-react';
 import Link from 'next/link';
 
 export default function Home() {
-  const [activeCategory, setActiveCategory] = useState('সব');
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setMounted(true);
-  }, []);
-
-  // Top 3 for Carousel
   const featuredArticles = newsArticles.slice(0, 3);
+  const trendingArticles = newsArticles.slice(3, 6);
   
-  // Trending articles
-  const trendingArticles = newsArticles.slice(3, 5);
-
-  // Filtered latest articles
-  const latestArticles = newsArticles
-    .slice(5)
-    .filter(article => activeCategory === 'সব' || article.category === activeCategory);
-
-  if (!mounted) return null; // Avoid hydration mismatch for motion/random
+  // Category specific slices
+  const middleEastNews = newsArticles.filter(a => a.category === 'মধ্যপ্রাচ্য').slice(0, 3);
+  const visaNews = newsArticles.filter(a => a.category === 'ভিসা ও ইমিগ্রেশন').slice(0, 4);
+  const europeNews = newsArticles.filter(a => a.category === 'ইউরোপ').slice(0, 4);
 
   return (
-    <div className="flex flex-col min-h-screen bg-gray-50 pb-6">
+    <div className="flex flex-col bg-gray-50 pb-6 pt-0">
+      <NewsTicker />
       
-      {/* Featured News Carousel (Scroll Snap) */}
-      <section className="bg-white pt-2 pb-4">
+      {/* Featured Carousel Section */}
+      <section className="bg-white pt-4 pb-3 shadow-sm rounded-b-xl border-b border-gray-100 mb-4">
         <div className="px-4 mb-3 flex items-center justify-between">
-          <h2 className="text-lg font-bold text-gray-800 flex items-center gap-2">
-            <Sparkles size={18} className="text-yellow-500" /> 
-            শীর্ষ খবর
+          <h2 className="text-xl font-bold text-gray-900 flex items-center gap-2">
+            <span className="text-blue-600">✨</span> শীর্ষ খবর
           </h2>
         </div>
-        
         <div className="flex overflow-x-auto hide-scrollbar snap-x snap-mandatory px-4 gap-4 pb-2">
           {featuredArticles.map((article) => (
-            <Link href={`/news/${article.id}`} key={article.id} className="block min-w-[85vw] md:min-w-[400px] snap-center relative rounded-2xl overflow-hidden shadow-sm h-56 flex-shrink-0 group">
-              <Image 
-                src={article.imageUrl} 
-                alt={article.title} 
-                fill 
-                className="object-cover transition-transform duration-700 group-hover:scale-105" 
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent flex flex-col justify-end p-4">
-                <span className="bg-blue-600 text-white text-xs font-bold px-2.5 py-1 rounded-md w-fit mb-2 shadow-md">
-                  {article.category}
-                </span>
-                <h3 className="text-white font-bold text-lg leading-tight line-clamp-2 group-hover:text-blue-100 transition-colors">
-                  {article.title}
-                </h3>
-              </div>
-            </Link>
+            <div key={article.id} className="min-w-[85vw] md:min-w-[400px] snap-center flex-shrink-0">
+              <NewsCard article={article} variant="featured" />
+            </div>
           ))}
         </div>
       </section>
 
-      {/* Trending Mini Section */}
-      <section className="bg-white mt-2 py-4 px-4">
-        <h2 className="text-base font-bold text-gray-800 flex items-center gap-2 mb-3">
-          <TrendingUp size={18} className="text-red-500" /> 
-          ট্রেন্ডিং
+      {/* Trending Section */}
+      <section className="bg-white p-5 rounded-2xl mx-4 shadow-sm border border-gray-100">
+        <h2 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+          <TrendingUp className="text-red-500" size={20} /> ট্রেন্ডিং
         </h2>
         <div className="flex flex-col gap-3">
           {trendingArticles.map((article, index) => (
@@ -86,49 +58,73 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Categories Scroll Sticky */}
-      <section className="sticky top-[64px] z-30 bg-white/90 backdrop-blur-md border-b border-gray-100 shadow-[0_4px_10px_-10px_rgba(0,0,0,0.1)] mt-2">
-        <div className="flex overflow-x-auto hide-scrollbar px-4 py-3 gap-2">
-          {categories.map((category) => (
-            <button
-              key={category}
-              onClick={() => setActiveCategory(category)}
-              className={`whitespace-nowrap px-4 py-1.5 rounded-full text-sm font-semibold transition-all ${
-                activeCategory === category
-                  ? 'bg-blue-600 text-white shadow-md shadow-blue-600/20 scale-105'
-                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-              }`}
-            >
-              {category}
-            </button>
-          ))}
+      {/* Middle East Section (Layout A: 1 Large Top, 2 Grid Bottom) */}
+      <section className="bg-white py-5">
+        <div className="px-4 mb-4 flex items-center justify-between">
+          <h2 className="text-lg font-bold text-gray-900 border-l-4 border-blue-600 pl-2 flex items-center gap-2">
+            <Globe2 size={18} className="text-blue-600" /> মধ্যপ্রাচ্য
+          </h2>
+          <Link href="/explore" className="text-sm text-blue-600 font-medium hover:underline">
+            সব দেখুন
+          </Link>
+        </div>
+        
+        <div className="px-4 flex flex-col gap-4">
+          {middleEastNews[0] && (
+            <NewsCard article={middleEastNews[0]} variant="large" />
+          )}
+          
+          <div className="grid grid-cols-2 gap-4">
+            {middleEastNews.slice(1, 3).map(article => (
+              <NewsCard key={article.id} article={article} variant="grid" />
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* Latest News List */}
-      <section className="flex flex-col bg-white">
-        <div className="px-4 py-4 flex items-center justify-between border-b border-gray-50">
-          <h2 className="text-lg font-bold text-gray-900 border-l-4 border-blue-600 pl-2">
-            সর্বশেষ খবর
+      {/* Visa & Immigration Section (Layout B: 1 Large Left/Top, 3 Compact Right/Bottom) */}
+      <section className="bg-white py-5">
+        <div className="px-4 mb-4 flex items-center justify-between">
+          <h2 className="text-lg font-bold text-gray-900 border-l-4 border-emerald-600 pl-2 flex items-center gap-2">
+            <Plane size={18} className="text-emerald-600" /> ভিসা ও ইমিগ্রেশন
           </h2>
-          <Link href="/explore" className="text-sm text-blue-600 font-medium flex items-center hover:underline bg-blue-50 px-3 py-1 rounded-full transition-colors hover:bg-blue-100">
+          <Link href="/explore" className="text-sm text-emerald-600 font-medium hover:underline">
+            সব দেখুন
+          </Link>
+        </div>
+        
+        <div className="px-4 flex flex-col md:flex-row gap-4">
+          <div className="md:w-1/2">
+            {visaNews[0] && (
+              <NewsCard article={visaNews[0]} variant="large" />
+            )}
+          </div>
+          <div className="md:w-1/2 flex flex-col justify-between">
+            {visaNews.slice(1, 4).map(article => (
+              <NewsCard key={article.id} article={article} variant="compact" />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Europe Section (Layout C: Default List or Grid) */}
+      <section className="bg-white py-5">
+        <div className="px-4 mb-4 flex items-center justify-between border-b border-gray-50 pb-3">
+          <h2 className="text-lg font-bold text-gray-900 border-l-4 border-purple-600 pl-2 flex items-center gap-2">
+            <Briefcase size={18} className="text-purple-600" /> ইউরোপ
+          </h2>
+          <Link href="/explore" className="text-sm text-purple-600 font-medium flex items-center hover:underline bg-purple-50 px-3 py-1 rounded-full">
             সব দেখুন <ChevronRight size={16} />
           </Link>
         </div>
         
         <div className="flex flex-col divide-y divide-gray-50">
-          {latestArticles.length > 0 ? (
-            latestArticles.map((article) => (
-              <NewsCard key={article.id} article={article} />
-            ))
-          ) : (
-            <div className="p-12 flex flex-col items-center justify-center text-gray-400 gap-3">
-              <Sparkles size={32} className="text-gray-200" />
-              <p className="text-sm font-medium">এই বিভাগে কোন খবর পাওয়া যায়নি।</p>
-            </div>
-          )}
+          {europeNews.map((article) => (
+            <NewsCard key={article.id} article={article} variant="default" />
+          ))}
         </div>
       </section>
+
     </div>
   );
 }

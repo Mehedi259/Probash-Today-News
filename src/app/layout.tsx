@@ -20,8 +20,8 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.className}>
       <body className="bg-gray-50 text-gray-900 antialiased min-h-screen flex flex-col">
-        {/* Max-width container to simulate mobile app feel on desktop */}
-        <div className="max-w-md mx-auto w-full min-h-screen bg-white shadow-xl relative pb-20 overflow-hidden">
+        {/* Full-width container for desktop */}
+        <div className="w-full min-h-screen bg-white relative pb-20 md:pb-0 overflow-x-hidden">
           <SavedNewsProvider>
             <Header />
             <main className="flex-1">{children}</main>

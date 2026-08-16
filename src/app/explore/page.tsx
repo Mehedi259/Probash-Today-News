@@ -60,10 +60,10 @@ export default function ExplorePage() {
           </h2>
         </div>
 
-        <div className="flex flex-col divide-y divide-gray-50">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 px-4">
           {filteredArticles.length > 0 ? (
             filteredArticles.map((article) => (
-              <NewsCard key={article.id} article={article} />
+              <NewsCard key={article.id} article={article} variant="grid" />
             ))
           ) : (
             <div className="p-12 text-center text-gray-400 flex flex-col items-center">

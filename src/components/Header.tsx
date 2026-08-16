@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { Bell, Search } from 'lucide-react';
 import { format } from 'date-fns';
 import { bn } from 'date-fns/locale';
@@ -16,20 +17,30 @@ export default function Header() {
 
   return (
     <>
-      <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-[0_2px_10px_-4px_rgba(0,0,0,0.05)] mx-auto max-w-md">
-        <div className="flex items-center justify-between px-4 py-3 w-full">
-          <div className="flex flex-col">
-            <div className="relative h-10 w-44 mb-1">
-              <Image 
-                src="/logo.png" 
-                alt="Probash Today Logo" 
-                fill
-                className="object-contain object-left" 
-                priority 
-              />
-            </div>
-            <span className="text-[10px] text-gray-500 font-medium uppercase tracking-wider">{currentDate}</span>
+      <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-[0_2px_10px_-4px_rgba(0,0,0,0.05)] w-full">
+        <div className="flex items-center justify-between px-4 lg:px-8 py-3 w-full">
+          <div className="flex items-center gap-8">
+            <Link href="/" className="flex flex-col">
+              <div className="relative h-10 w-44 mb-1">
+                <Image 
+                  src="/logo.png" 
+                  alt="Probash Today Logo" 
+                  fill
+                  className="object-contain object-left" 
+                  priority 
+                />
+              </div>
+              <span className="text-[10px] text-gray-500 font-medium uppercase tracking-wider">{currentDate}</span>
+            </Link>
+            
+            {/* Desktop Navigation */}
+            <nav className="hidden md:flex items-center gap-6">
+              <Link href="/" className="text-sm font-semibold text-gray-700 hover:text-blue-600 transition-colors">হোম</Link>
+              <Link href="/explore" className="text-sm font-semibold text-gray-700 hover:text-blue-600 transition-colors">সব খবর</Link>
+              <Link href="/saved" className="text-sm font-semibold text-gray-700 hover:text-blue-600 transition-colors">সেভড</Link>
+            </nav>
           </div>
+
           <div className="flex items-center gap-4 relative">
             <button 
               onClick={() => setIsSearchOpen(true)}

@@ -5,6 +5,7 @@ import NewsCard from '@/components/NewsCard';
 import { newsArticles, categories } from '@/data/news';
 import { TrendingUp, Sparkles, ChevronRight } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function Home() {
   const [activeCategory, setActiveCategory] = useState('সব');
@@ -42,22 +43,22 @@ export default function Home() {
         
         <div className="flex overflow-x-auto hide-scrollbar snap-x snap-mandatory px-4 gap-4 pb-2">
           {featuredArticles.map((article) => (
-            <div key={article.id} className="min-w-[85vw] md:min-w-[400px] snap-center relative rounded-2xl overflow-hidden shadow-sm h-56 flex-shrink-0">
+            <Link href={`/news/${article.id}`} key={article.id} className="block min-w-[85vw] md:min-w-[400px] snap-center relative rounded-2xl overflow-hidden shadow-sm h-56 flex-shrink-0 group">
               <Image 
                 src={article.imageUrl} 
                 alt={article.title} 
                 fill 
-                className="object-cover" 
+                className="object-cover transition-transform duration-700 group-hover:scale-105" 
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent flex flex-col justify-end p-4">
-                <span className="bg-blue-600 text-white text-xs font-bold px-2.5 py-1 rounded-md w-fit mb-2">
+                <span className="bg-blue-600 text-white text-xs font-bold px-2.5 py-1 rounded-md w-fit mb-2 shadow-md">
                   {article.category}
                 </span>
-                <h3 className="text-white font-bold text-lg leading-tight line-clamp-2">
+                <h3 className="text-white font-bold text-lg leading-tight line-clamp-2 group-hover:text-blue-100 transition-colors">
                   {article.title}
                 </h3>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </section>
@@ -70,8 +71,8 @@ export default function Home() {
         </h2>
         <div className="flex flex-col gap-3">
           {trendingArticles.map((article, index) => (
-            <div key={article.id} className="flex gap-3 items-center group cursor-pointer">
-              <span className="text-2xl font-black text-gray-200 group-hover:text-blue-100 transition-colors">
+            <Link href={`/news/${article.id}`} key={article.id} className="flex gap-3 items-center group cursor-pointer">
+              <span className="text-2xl font-black text-gray-200 group-hover:text-blue-200 transition-colors">
                 0{index + 1}
               </span>
               <div className="flex-1">
@@ -80,7 +81,7 @@ export default function Home() {
                 </h4>
                 <p className="text-xs text-gray-400 mt-1">{article.source}</p>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </section>
@@ -110,9 +111,9 @@ export default function Home() {
           <h2 className="text-lg font-bold text-gray-900 border-l-4 border-blue-600 pl-2">
             সর্বশেষ খবর
           </h2>
-          <button className="text-sm text-blue-600 font-medium flex items-center hover:underline">
+          <Link href="/explore" className="text-sm text-blue-600 font-medium flex items-center hover:underline bg-blue-50 px-3 py-1 rounded-full transition-colors hover:bg-blue-100">
             সব দেখুন <ChevronRight size={16} />
-          </button>
+          </Link>
         </div>
         
         <div className="flex flex-col divide-y divide-gray-50">

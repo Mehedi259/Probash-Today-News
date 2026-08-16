@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import BottomNav from "@/components/BottomNav";
+import { SavedNewsProvider } from "@/context/SavedNewsContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,9 +22,11 @@ export default function RootLayout({
       <body className="bg-gray-50 text-gray-900 antialiased min-h-screen flex flex-col">
         {/* Max-width container to simulate mobile app feel on desktop */}
         <div className="max-w-2xl mx-auto w-full min-h-screen bg-white shadow-sm relative pb-20">
-          <Header />
-          <main className="flex-1">{children}</main>
-          <BottomNav />
+          <SavedNewsProvider>
+            <Header />
+            <main className="flex-1">{children}</main>
+            <BottomNav />
+          </SavedNewsProvider>
         </div>
       </body>
     </html>

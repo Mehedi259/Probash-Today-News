@@ -1,29 +1,64 @@
-import React from 'react';
+'use client';
+
+import React, { useState } from 'react';
 import Image from 'next/image';
 import { Bell, Search } from 'lucide-react';
 import { format } from 'date-fns';
 import { bn } from 'date-fns/locale';
+import SearchModal from './SearchModal';
+import NotificationsDropdown from './NotificationsDropdown';
 
 export default function Header() {
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isNotificationsOpen, setIsNotificationsOpen] = useState(false);
+
   const currentDate = format(new Date(), 'EEEE, d MMMM, yyyy', { locale: bn });
 
   return (
-    <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100 shadow-sm">
-      <div className="flex items-center justify-between px-4 py-3 max-w-2xl mx-auto">
-        <div className="flex flex-col">
-          <Image src="/logo.png" alt="Probash Today Logo" width={140} height={40} className="object-contain h-7 w-auto mb-1" priority />
-          <span className="text-[10px] text-gray-500 font-medium uppercase tracking-wider">{currentDate}</span>
+    <>
+      <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-[0_2px_10px_-4px_rgba(0,0,0,0.05)]">
+        <div className="flex items-center justify-between px-4 py-3 max-w-2xl mx-auto">
+          <div className="flex flex-col">
+            <div className="relative h-10 w-44 mb-1">
+              <Image 
+                src="/logo.png" 
+                alt="Probash Today Logo" 
+                fill
+                className="object-contain object-left" 
+                priority 
+              />
+            </div>
+            <span className="text-[10px] text-gray-500 font-medium uppercase tracking-wider">{currentDate}</span>
+          </div>
+          <div className="flex items-center gap-4 relative">
+            <button 
+              onClick={() => setIsSearchOpen(true)}
+              className="p-2 text-gray-600 hover:text-blue-600 hover:bg-blue-50 rounded-full transition-all"
+            >
+              <Search size={22} />
+            </button>
+            <div className="relative">
+              <button 
+                onClick={() => setIsNotificationsOpen(!isNotificationsOpen)}
+                className="p-2 text-gray-600 hover:text-blue-600 hover:bg-blue-50 rounded-full transition-all relative"
+              >
+                <Bell size={22} />
+                <span className="absolute top-1.5 right-1.5 w-2.5 h-2.5 bg-red-500 rounded-full border-2 border-white animate-pulse"></span>
+              </button>
+              
+              <NotificationsDropdown 
+                isOpen={isNotificationsOpen} 
+                onClose={() => setIsNotificationsOpen(false)} 
+              />
+            </div>
+          </div>
         </div>
-        <div className="flex items-center gap-4">
-          <button className="text-gray-600 hover:text-blue-600 transition-colors">
-            <Search size={20} />
-          </button>
-          <button className="text-gray-600 hover:text-blue-600 transition-colors relative">
-            <Bell size={20} />
-            <span className="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full border border-white"></span>
-          </button>
-        </div>
-      </div>
-    </header>
+      </header>
+
+      <SearchModal 
+        isOpen={isSearchOpen} 
+        onClose={() => setIsSearchOpen(false)} 
+      />
+    </>
   );
 }

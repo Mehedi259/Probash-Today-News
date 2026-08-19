@@ -34,6 +34,10 @@ export default function NewsDetailClient({ article }: NewsDetailClientProps) {
     formattedDate = 'কিছুক্ষণ আগে';
   }
 
+  const imageUrl = article.image 
+    ? article.image.replace('http://46.225.103.236:8002', '') 
+    : (article.image_url || '/images/news1.jpg');
+
   return (
     <div className="flex flex-col min-h-screen bg-white pb-20">
       {/* App Bar overlay */}
@@ -60,7 +64,7 @@ export default function NewsDetailClient({ article }: NewsDetailClientProps) {
       {/* Hero Image */}
       <div className="relative w-full h-[45vh] bg-gray-200">
         <Image 
-          src={article.image_url || '/images/news1.jpg'} 
+          src={imageUrl} 
           alt={article.title} 
           fill 
           className="object-cover" 

@@ -24,6 +24,10 @@ export default function NewsCard({ article, variant = 'default' }: NewsCardProps
     // ignore
   }
 
+  const imageUrl = article.image 
+    ? article.image.replace('http://46.225.103.236:8002', '') 
+    : (article.image_url || '/images/news1.jpg');
+
   const handleSave = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
@@ -39,7 +43,7 @@ export default function NewsCard({ article, variant = 'default' }: NewsCardProps
     return (
       <Link href={`/news/${article.id}`} className="block w-full h-56 overflow-hidden rounded-2xl group relative shadow-sm border border-gray-100">
         <Image
-          src={article.image_url || '/images/news1.jpg'}
+          src={imageUrl}
           alt={article.title}
           fill
           sizes="(max-width: 768px) 100vw, 50vw"
@@ -74,7 +78,7 @@ export default function NewsCard({ article, variant = 'default' }: NewsCardProps
       <Link href={`/news/${article.id}`} className="flex flex-col group relative overflow-hidden bg-white rounded-xl shadow-sm border border-gray-100">
         <div className="relative w-full h-56 md:h-64 overflow-hidden bg-gray-200">
           <Image
-            src={article.image_url || '/images/news1.jpg'}
+            src={imageUrl}
             alt={article.title}
             fill
             sizes="(max-width: 768px) 100vw, 50vw"
@@ -111,7 +115,7 @@ export default function NewsCard({ article, variant = 'default' }: NewsCardProps
       <Link href={`/news/${article.id}`} className="flex flex-col group relative bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden h-full">
         <div className="relative w-full h-32 bg-gray-200 overflow-hidden">
           <Image
-            src={article.image_url || '/images/news1.jpg'}
+            src={imageUrl}
             alt={article.title}
             fill
             sizes="50vw"
@@ -145,7 +149,7 @@ export default function NewsCard({ article, variant = 'default' }: NewsCardProps
       <Link href={`/news/${article.id}`} className="flex gap-3 group relative py-3 border-b border-gray-100 last:border-0 hover:bg-gray-50 px-2 rounded-lg transition-colors">
         <div className="relative w-20 h-16 shrink-0 overflow-hidden rounded-md bg-gray-200">
           <Image
-            src={article.image_url || '/images/news1.jpg'}
+            src={imageUrl}
             alt={article.title}
             fill
             sizes="80px"
@@ -173,7 +177,7 @@ export default function NewsCard({ article, variant = 'default' }: NewsCardProps
     <Link href={`/news/${article.id}`} className="flex gap-4 p-4 border-b border-gray-100 group hover:bg-gray-50 transition-colors relative block">
       <div className="relative w-28 h-20 shrink-0 overflow-hidden rounded-lg bg-gray-200">
         <Image
-          src={article.image_url || '/images/news1.jpg'}
+          src={imageUrl}
           alt={article.title}
           fill
           sizes="112px"

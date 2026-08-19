@@ -10,6 +10,7 @@ export interface NewsArticle {
   description: string;
   category: NewsCategory;
   image_url: string | null;
+  image?: string;
   source: string;
   is_featured: boolean;
   is_trending: boolean;

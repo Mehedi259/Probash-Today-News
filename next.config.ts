@@ -15,6 +15,10 @@ const nextConfig: NextConfig = {
         source: '/api/:path*',
         destination: 'http://46.225.103.236:8002/api/:path*/',
       },
+      {
+        source: '/media/:path*',
+        destination: 'http://46.225.103.236:8002/media/:path*',
+      },
     ];
   },
 };

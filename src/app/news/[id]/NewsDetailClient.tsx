@@ -34,9 +34,18 @@ export default function NewsDetailClient({ article }: NewsDetailClientProps) {
     formattedDate = 'কিছুক্ষণ আগে';
   }
 
-  const imageUrl = article.image 
-    ? article.image.replace('http://46.225.103.236:8002', '') 
-    : (article.image_url || '/images/news1.jpg');
+  const getImageUrl = (url: string | null | undefined, fallback: string | null) => {
+    if (url) {
+      try {
+        return new URL(url).pathname;
+      } catch (e) {
+        return url;
+      }
+    }
+    return fallback || '/images/news1.jpg';
+  };
+
+  const imageUrl = getImageUrl(article.image, article.image_url);
 
   return (
     <div className="flex flex-col min-h-screen bg-white pb-20">

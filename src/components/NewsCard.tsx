@@ -24,9 +24,18 @@ export default function NewsCard({ article, variant = 'default' }: NewsCardProps
     // ignore
   }
 
-  const imageUrl = article.image 
-    ? article.image.replace('http://46.225.103.236:8002', '') 
-    : (article.image_url || '/images/news1.jpg');
+  const getImageUrl = (url: string | null | undefined, fallback: string | null) => {
+    if (url) {
+      try {
+        return new URL(url).pathname;
+      } catch (e) {
+        return url;
+      }
+    }
+    return fallback || '/images/news1.jpg';
+  };
+
+  const imageUrl = getImageUrl(article.image, article.image_url);
 
   const handleSave = (e: React.MouseEvent) => {
     e.preventDefault();

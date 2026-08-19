@@ -1,9 +1,13 @@
 import React from 'react';
 import Link from 'next/link';
-import { newsArticles } from '@/data/news';
+import { NewsArticle } from '@/data/news';
 
-export default function NewsTicker() {
-  const latestNews = newsArticles.slice(0, 5);
+interface NewsTickerProps {
+  articles: NewsArticle[];
+}
+
+export default function NewsTicker({ articles }: NewsTickerProps) {
+  const latestNews = articles.slice(0, 5);
 
   return (
     <div className="bg-white border-b border-gray-200 flex items-center overflow-hidden h-10 shadow-sm relative z-10">

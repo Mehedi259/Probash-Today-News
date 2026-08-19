@@ -6,8 +6,8 @@ import { NewsArticle } from '@/data/news';
 interface SavedNewsContextType {
   savedArticles: NewsArticle[];
   saveArticle: (article: NewsArticle) => void;
-  removeArticle: (id: string) => void;
-  isSaved: (id: string) => boolean;
+  removeArticle: (id: number) => void;
+  isSaved: (id: number) => boolean;
 }
 
 const SavedNewsContext = createContext<SavedNewsContextType | undefined>(undefined);
@@ -43,11 +43,11 @@ export function SavedNewsProvider({ children }: { children: ReactNode }) {
     });
   };
 
-  const removeArticle = (id: string) => {
+  const removeArticle = (id: number) => {
     setSavedArticles(prev => prev.filter(article => article.id !== id));
   };
 
-  const isSaved = (id: string) => {
+  const isSaved = (id: number) => {
     return savedArticles.some(article => article.id === id);
   };
 

@@ -19,7 +19,7 @@ export default function NewsCard({ article, variant = 'default' }: NewsCardProps
 
   let timeAgo = 'কিছুক্ষণ আগে';
   try {
-    timeAgo = formatDistanceToNow(new Date(article.date), { addSuffix: true });
+    timeAgo = formatDistanceToNow(new Date(article.created_at), { addSuffix: true });
   } catch (e) {
     // ignore
   }
@@ -39,7 +39,7 @@ export default function NewsCard({ article, variant = 'default' }: NewsCardProps
     return (
       <Link href={`/news/${article.id}`} className="block w-full h-56 overflow-hidden rounded-2xl group relative shadow-sm border border-gray-100">
         <Image
-          src={article.imageUrl}
+          src={article.image_url || '/images/news1.jpg'}
           alt={article.title}
           fill
           sizes="(max-width: 768px) 100vw, 50vw"
@@ -53,7 +53,7 @@ export default function NewsCard({ article, variant = 'default' }: NewsCardProps
         </button>
         <div className="absolute bottom-0 left-0 right-0 p-5 text-white z-10">
           <span className="inline-block px-2.5 py-1 text-xs font-semibold bg-blue-600 rounded-sm mb-3 shadow-md shadow-blue-600/20">
-            {article.category}
+            {article.category?.name}
           </span>
           <h2 className="text-xl font-bold leading-tight mb-2 group-hover:text-blue-100 transition-colors line-clamp-2">
             {article.title}
@@ -74,7 +74,7 @@ export default function NewsCard({ article, variant = 'default' }: NewsCardProps
       <Link href={`/news/${article.id}`} className="flex flex-col group relative overflow-hidden bg-white rounded-xl shadow-sm border border-gray-100">
         <div className="relative w-full h-56 md:h-64 overflow-hidden bg-gray-200">
           <Image
-            src={article.imageUrl}
+            src={article.image_url || '/images/news1.jpg'}
             alt={article.title}
             fill
             sizes="(max-width: 768px) 100vw, 50vw"
@@ -87,7 +87,7 @@ export default function NewsCard({ article, variant = 'default' }: NewsCardProps
         </div>
         <div className="p-4">
           <span className="text-[10px] font-bold text-blue-600 uppercase tracking-wide mb-2 block">
-            {article.category}
+            {article.category?.name}
           </span>
           <h3 className="text-lg md:text-xl font-bold leading-snug text-gray-900 mb-2 group-hover:text-blue-700 transition-colors line-clamp-2">
             {article.title}
@@ -111,7 +111,7 @@ export default function NewsCard({ article, variant = 'default' }: NewsCardProps
       <Link href={`/news/${article.id}`} className="flex flex-col group relative bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden h-full">
         <div className="relative w-full h-32 bg-gray-200 overflow-hidden">
           <Image
-            src={article.imageUrl}
+            src={article.image_url || '/images/news1.jpg'}
             alt={article.title}
             fill
             sizes="50vw"
@@ -145,7 +145,7 @@ export default function NewsCard({ article, variant = 'default' }: NewsCardProps
       <Link href={`/news/${article.id}`} className="flex gap-3 group relative py-3 border-b border-gray-100 last:border-0 hover:bg-gray-50 px-2 rounded-lg transition-colors">
         <div className="relative w-20 h-16 shrink-0 overflow-hidden rounded-md bg-gray-200">
           <Image
-            src={article.imageUrl}
+            src={article.image_url || '/images/news1.jpg'}
             alt={article.title}
             fill
             sizes="80px"
@@ -173,7 +173,7 @@ export default function NewsCard({ article, variant = 'default' }: NewsCardProps
     <Link href={`/news/${article.id}`} className="flex gap-4 p-4 border-b border-gray-100 group hover:bg-gray-50 transition-colors relative block">
       <div className="relative w-28 h-20 shrink-0 overflow-hidden rounded-lg bg-gray-200">
         <Image
-          src={article.imageUrl}
+          src={article.image_url || '/images/news1.jpg'}
           alt={article.title}
           fill
           sizes="112px"
@@ -184,7 +184,7 @@ export default function NewsCard({ article, variant = 'default' }: NewsCardProps
       <div className="flex flex-col justify-between flex-1 py-0.5">
         <div className="pr-8">
           <span className="text-[10px] font-bold text-blue-600 uppercase tracking-wide">
-            {article.category}
+            {article.category?.name}
           </span>
           <h3 className="text-[15px] font-bold leading-snug text-gray-900 mt-1 line-clamp-2 group-hover:text-blue-700 transition-colors">
             {article.title}

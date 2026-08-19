@@ -1,24 +1,35 @@
-'use client';
-
-import React, { useState } from 'react';
+import React from 'react';
 import NewsCard from '@/components/NewsCard';
 import NewsTicker from '@/components/NewsTicker';
-import { newsArticles } from '@/data/news';
 import { TrendingUp, ChevronRight, Globe2, Plane, Briefcase } from 'lucide-react';
 import Link from 'next/link';
+import { fetchNews } from '@/services/api';
+import { NewsArticle } from '@/data/news';
 
-export default function Home() {
-  const featuredArticles = newsArticles.slice(0, 3);
-  const trendingArticles = newsArticles.slice(3, 8);
+export default async function Home() {
+  let allNews: NewsArticle[] = [];
+  try {
+    allNews = await fetchNews();
+  } catch (error) {
+    console.error("Failed to fetch news:", error);
+  }
+
+  // Fallback if empty array
+  const featuredArticles = allNews.filter(a => a.is_featured).slice(0, 3);
+  const trendingArticles = allNews.filter(a => a.is_trending).slice(0, 5);
+  
+  // If not enough featured/trending, fallback to latest
+  const finalFeatured = featuredArticles.length > 0 ? featuredArticles : allNews.slice(0, 3);
+  const finalTrending = trendingArticles.length > 0 ? trendingArticles : allNews.slice(3, 8);
   
   // Category specific slices
-  const middleEastNews = newsArticles.filter(a => a.category === 'মধ্যপ্রাচ্য').slice(0, 4);
-  const visaNews = newsArticles.filter(a => a.category === 'ভিসা ও ইমিগ্রেশন').slice(0, 5);
-  const europeNews = newsArticles.filter(a => a.category === 'ইউরোপ').slice(0, 4);
+  const middleEastNews = allNews.filter(a => a.category?.slug === 'মধ্যপ্রাচ্য' || a.category?.name === 'মধ্যপ্রাচ্য').slice(0, 4);
+  const visaNews = allNews.filter(a => a.category?.slug === 'ভিসা-ও-ইমিগ্রেশন' || a.category?.name === 'ভিসা ও ইমিগ্রেশন').slice(0, 5);
+  const europeNews = allNews.filter(a => a.category?.slug === 'ইউরোপ' || a.category?.name === 'ইউরোপ').slice(0, 4);
 
   return (
     <div className="flex flex-col bg-gray-50 pb-6 pt-0">
-      <NewsTicker />
+      <NewsTicker articles={allNews} />
       
       {/* Hero Section: Featured & Trending for Desktop */}
       <div className="flex flex-col lg:flex-row gap-6 px-0 md:px-4 lg:px-8 mt-4">
@@ -31,7 +42,7 @@ export default function Home() {
             </h2>
           </div>
           <div className="flex md:grid md:grid-cols-2 overflow-x-auto md:overflow-visible hide-scrollbar snap-x snap-mandatory px-4 gap-4 pb-2">
-            {featuredArticles.map((article, idx) => (
+            {finalFeatured.map((article, idx) => (
               <div key={article.id} className={`min-w-[85vw] md:min-w-0 snap-center flex-shrink-0 ${idx === 0 ? 'md:col-span-2' : 'md:col-span-1'}`}>
                 <NewsCard article={article} variant="featured" />
               </div>
@@ -45,7 +56,7 @@ export default function Home() {
             <TrendingUp className="text-red-500" size={20} /> ট্রেন্ডিং
           </h2>
           <div className="flex flex-col gap-3">
-            {trendingArticles.map((article, index) => (
+            {finalTrending.map((article, index) => (
               <Link href={`/news/${article.id}`} key={article.id} className="flex gap-3 items-center group cursor-pointer pb-3 border-b border-gray-50 last:border-0">
                 <span className="text-2xl font-black text-gray-200 group-hover:text-blue-200 transition-colors">
                   0{index + 1}

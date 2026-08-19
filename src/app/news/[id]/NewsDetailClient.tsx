@@ -49,29 +49,28 @@ export default function NewsDetailClient({ article }: NewsDetailClientProps) {
 
   return (
     <div className="flex flex-col min-h-screen bg-white pb-20">
-      {/* App Bar overlay */}
-      <div className="fixed top-0 left-0 right-0 max-w-2xl mx-auto z-50 flex items-center justify-between p-4 bg-gradient-to-b from-black/60 to-transparent">
-        <button 
-          onClick={() => router.back()}
-          className="w-10 h-10 rounded-full bg-black/30 backdrop-blur-md flex items-center justify-center text-white hover:bg-black/50 transition"
-        >
-          <ArrowLeft size={20} />
-        </button>
-        <div className="flex gap-3">
-          <button 
-            onClick={handleSave}
-            className="w-10 h-10 rounded-full bg-black/30 backdrop-blur-md flex items-center justify-center text-white hover:bg-black/50 transition"
-          >
-            <Bookmark size={20} className={saved ? 'fill-blue-500 text-blue-500' : ''} />
-          </button>
-          <button className="w-10 h-10 rounded-full bg-black/30 backdrop-blur-md flex items-center justify-center text-white hover:bg-black/50 transition">
-            <Share2 size={20} />
-          </button>
-        </div>
-      </div>
-
       {/* Hero Image */}
       <div className="relative w-full h-[45vh] bg-gray-200">
+        {/* App Bar overlay */}
+        <div className="absolute top-0 left-0 right-0 z-50 flex items-center justify-between p-4 bg-gradient-to-b from-black/60 to-transparent pointer-events-none">
+          <button 
+            onClick={() => router.back()}
+            className="w-10 h-10 rounded-full bg-black/30 backdrop-blur-md flex items-center justify-center text-white hover:bg-black/50 transition pointer-events-auto"
+          >
+            <ArrowLeft size={20} />
+          </button>
+          <div className="flex gap-3 pointer-events-auto">
+            <button 
+              onClick={handleSave}
+              className="w-10 h-10 rounded-full bg-black/30 backdrop-blur-md flex items-center justify-center text-white hover:bg-black/50 transition"
+            >
+              <Bookmark size={20} className={saved ? 'fill-blue-500 text-blue-500' : ''} />
+            </button>
+            <button className="w-10 h-10 rounded-full bg-black/30 backdrop-blur-md flex items-center justify-center text-white hover:bg-black/50 transition">
+              <Share2 size={20} />
+            </button>
+          </div>
+        </div>
         <Image 
           src={imageUrl} 
           alt={article.title} 
@@ -108,17 +107,10 @@ export default function NewsDetailClient({ article }: NewsDetailClientProps) {
           </div>
         </div>
 
-        {/* Article Body (Mock data extension since we only have description) */}
+        {/* Article Body */}
         <div className="prose prose-lg prose-blue max-w-none text-gray-800">
-          <p className="text-lg font-medium leading-relaxed mb-6 text-gray-700">
+          <p className="text-lg font-medium leading-relaxed mb-6 text-gray-700 whitespace-pre-line">
             {article.description}
-          </p>
-          
-          <p className="leading-relaxed mb-4">
-            এটি একটি ডেমো নিউজ আর্টিকেল। মূল নিউজের বিস্তারিত অংশ এখানে থাকবে। প্রবাসীদের জন্য প্রতিনিয়ত নতুন নতুন আপডেট আসছে, আর সেই সব আপডেট সবার আগে পৌঁছে দিতেই আমাদের এই ক্ষুদ্র প্রয়াস।
-          </p>
-          <p className="leading-relaxed mb-4">
-            সংবাদটি শেয়ার করে অন্যকে জানার সুযোগ করে দিন। আপনার যেকোনো মতামত বা পরামর্শ আমাদের জানাতে পারেন।
           </p>
         </div>
 

@@ -21,7 +21,7 @@ export default function Header() {
         <div className="flex items-center justify-between px-4 lg:px-8 py-3 w-full">
           <div className="flex items-center gap-8">
             <Link href="/" className="flex flex-col">
-              <div className="relative h-10 w-44 mb-1">
+              <div className="relative h-12 w-52 md:h-14 md:w-60 mb-1">
                 <Image 
                   src="/logo.png" 
                   alt="Probash Today Logo" 

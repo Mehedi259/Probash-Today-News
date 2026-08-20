@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { Mail, MapPin, Phone } from 'lucide-react';
 
 export default function Footer() {
@@ -8,7 +9,14 @@ export default function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10">
           {/* Brand & About */}
           <div className="space-y-4">
-            <h2 className="text-2xl font-bold text-white tracking-tight">Probash Today</h2>
+            <div className="relative h-14 w-52 md:h-16 md:w-60 mb-2">
+              <Image 
+                src="/logo.png" 
+                alt="Probash Today Logo" 
+                fill
+                className="object-contain object-left" 
+              />
+            </div>
             <p className="text-sm text-slate-400 leading-relaxed">
               Your trusted source for the latest news, updates, and stories for expatriates around the world. Stay connected with your roots.
             </p>
@@ -31,7 +39,7 @@ export default function Footer() {
             <ul className="space-y-3">
               <li className="flex items-center space-x-3 text-sm">
                 <MapPin size={18} className="text-slate-400" />
-                <span>123 News Avenue, Dhaka, Bangladesh</span>
+                <span>Mirpur, Dhaka, Bangladesh</span>
               </li>
               <li className="flex items-center space-x-3 text-sm">
                 <Phone size={18} className="text-slate-400" />

@@ -9,7 +9,7 @@ import { bn } from 'date-fns/locale';
 import SearchModal from './SearchModal';
 import NotificationsDropdown from './NotificationsDropdown';
 
-export default function Header() {
+export default function Header({ categories = [] }: { categories?: any[] }) {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isNotificationsOpen, setIsNotificationsOpen] = useState(false);
 
@@ -36,6 +36,11 @@ export default function Header() {
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center gap-6">
               <Link href="/" className="text-sm font-semibold text-gray-700 hover:text-blue-600 transition-colors">হোম</Link>
+              {categories.map((cat) => (
+                <Link key={cat.id} href={`/explore?category=${cat.slug}`} className="text-sm font-semibold text-gray-700 hover:text-blue-600 transition-colors">
+                  {cat.name}
+                </Link>
+              ))}
               <Link href="/explore" className="text-sm font-semibold text-gray-700 hover:text-blue-600 transition-colors">সব খবর</Link>
               <Link href="/saved" className="text-sm font-semibold text-gray-700 hover:text-blue-600 transition-colors">সেভড</Link>
             </nav>

@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import NewsCard from '@/components/NewsCard';
 import { Search } from 'lucide-react';
 import { NewsArticle, NewsCategory } from '@/data/news';
+import { useSearchParams, useRouter } from 'next/navigation';
 
 interface ExploreClientProps {
   initialNews: NewsArticle[];
@@ -11,18 +12,18 @@ interface ExploreClientProps {
 }
 
 export default function ExploreClient({ initialNews, categories }: ExploreClientProps) {
-  const [activeCategory, setActiveCategory] = useState('সব');
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  
+  const activeCategorySlug = searchParams.get('category') || 'সব';
   const [searchQuery, setSearchQuery] = useState('');
 
   const filteredArticles = initialNews.filter(article => {
-    const matchesCategory = activeCategory === 'সব' || article.category?.name === activeCategory || article.category?.slug === activeCategory;
+    const matchesCategory = activeCategorySlug === 'সব' || article.category?.slug === activeCategorySlug;
     const matchesSearch = article.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                          article.category?.name.toLowerCase().includes(searchQuery.toLowerCase());
+                          (article.category?.name || '').toLowerCase().includes(searchQuery.toLowerCase());
     return matchesCategory && matchesSearch;
   });
-
-  // Adding 'সব' as the first virtual category
-  const displayCategories = [{ id: 0, name: 'সব', slug: 'all' }, ...categories];
 
   return (
     <div className="flex flex-col min-h-[calc(100vh-64px-64px)] bg-white pb-6">
@@ -42,14 +43,14 @@ export default function ExploreClient({ initialNews, categories }: ExploreClient
       </div>
 
       {/* Categories */}
-      <div className="sticky top-[125px] z-20 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-[0_4px_10px_-10px_rgba(0,0,0,0.1)]">
+      <div className="sticky top-[125px] z-20 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-[0_4px_10px_-10px_rgba(0,0,0,0.1)] md:hidden">
         <div className="flex overflow-x-auto hide-scrollbar px-4 py-3 gap-2">
-          {displayCategories.map((category) => (
+          {categories.map((category) => (
             <button
               key={category.id}
-              onClick={() => setActiveCategory(category.name)}
+              onClick={() => router.push(`/explore?category=${category.slug}`, { scroll: false })}
               className={`whitespace-nowrap px-4 py-1.5 rounded-full text-sm font-semibold transition-all ${
-                activeCategory === category.name
+                activeCategorySlug === category.slug
                   ? 'bg-blue-600 text-white shadow-md shadow-blue-600/20'
                   : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
               }`}
